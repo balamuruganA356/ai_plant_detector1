@@ -71,14 +71,14 @@ export const HomePage: React.FC<HomePageProps> = ({ language, onNavigate }) => {
     <div className="space-y-16 py-6 sm:py-10">
       
       {/* HERO SECTION */}
-      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-emerald-950/90 via-stone-900/85 to-stone-950/90 backdrop-blur-xl text-white p-8 sm:p-14 border border-emerald-500/40 shadow-2xl">
+      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-[#061e16] via-[#051812] to-[#030d0a] backdrop-blur-xl text-white p-8 sm:p-14 border border-emerald-500/40 shadow-2xl">
         {/* Subtle decorative background glow */}
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-emerald-500/15 blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-teal-500/10 blur-3xl pointer-events-none" />
 
         <div className="relative max-w-3xl space-y-6">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/90 border border-emerald-500/60 text-emerald-300 text-xs font-bold tracking-wide">
-            <Leaf className="w-3.5 h-3.5" />
+            <Leaf className="w-3.5 h-3.5 text-emerald-400" />
             <span>{t.hero.badge}</span>
           </div>
 
@@ -105,29 +105,29 @@ export const HomePage: React.FC<HomePageProps> = ({ language, onNavigate }) => {
                 const featEl = document.getElementById('features-section');
                 if (featEl) featEl.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="px-5 py-3.5 rounded-xl bg-stone-800/90 hover:bg-stone-700 text-stone-100 border border-stone-600 font-semibold text-sm transition-all cursor-pointer"
+              className="px-5 py-3.5 rounded-xl bg-stone-900/90 hover:bg-stone-800 text-stone-100 border border-stone-600 font-semibold text-sm transition-all cursor-pointer"
             >
               {t.hero.exploreBtn}
             </button>
           </div>
 
           {/* Quick Stats Grid */}
-          <div className="pt-8 border-t border-stone-800/80 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 text-left">
+          <div className="pt-8 border-t border-emerald-500/20 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 text-left">
             <div>
               <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">96.4%</div>
-              <div className="text-xs text-stone-300 font-medium">{t.hero.statAccuracy}</div>
+              <div className="text-xs text-stone-300 font-semibold mt-0.5">{t.hero.statAccuracy}</div>
             </div>
             <div>
               <div className="text-2xl sm:text-3xl font-extrabold text-emerald-400 tracking-tight">7+</div>
-              <div className="text-xs text-stone-300 font-medium">{t.hero.statCrops}</div>
+              <div className="text-xs text-stone-300 font-semibold mt-0.5">{t.hero.statCrops}</div>
             </div>
             <div>
               <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">&lt; 1.2s</div>
-              <div className="text-xs text-stone-300 font-medium">{t.hero.statSpeed}</div>
+              <div className="text-xs text-stone-300 font-semibold mt-0.5">{t.hero.statSpeed}</div>
             </div>
             <div>
               <div className="text-2xl sm:text-3xl font-extrabold text-emerald-400 tracking-tight">18+</div>
-              <div className="text-xs text-stone-300 font-medium">{t.hero.statPathogens}</div>
+              <div className="text-xs text-stone-300 font-semibold mt-0.5">{t.hero.statPathogens}</div>
             </div>
           </div>
         </div>
@@ -136,7 +136,7 @@ export const HomePage: React.FC<HomePageProps> = ({ language, onNavigate }) => {
       {/* WORKFLOW PIPELINE */}
       <section className="space-y-6">
         <div className="text-center max-w-2xl mx-auto space-y-2">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 dark:text-stone-50 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 dark:text-white tracking-tight">
             How AgroVision AI Works
           </h2>
           <p className="text-xs sm:text-sm text-stone-700 dark:text-stone-300 font-medium">
@@ -148,16 +148,16 @@ export const HomePage: React.FC<HomePageProps> = ({ language, onNavigate }) => {
           {workflowSteps.map((step) => (
             <div
               key={step.step}
-              className="glass-card-interactive rounded-2xl p-5 relative flex flex-col justify-between"
+              className="glass-card-interactive rounded-2xl p-5 relative flex flex-col justify-between border border-stone-200/80 dark:border-emerald-500/30"
             >
               <div>
-                <span className="text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400 tracking-wider">
+                <span className="text-xs font-mono font-extrabold text-emerald-700 dark:text-emerald-400 tracking-wider">
                   STEP {step.step}
                 </span>
-                <h3 className="font-bold text-stone-900 dark:text-stone-50 text-sm mt-2 mb-1.5">
+                <h3 className="font-bold text-stone-900 dark:text-white text-sm mt-2 mb-1.5">
                   {step.title}
                 </h3>
-                <p className="text-xs text-stone-700 dark:text-stone-200 leading-relaxed font-normal">
+                <p className="text-xs text-stone-700 dark:text-stone-300 leading-relaxed font-normal">
                   {step.desc}
                 </p>
               </div>
@@ -169,7 +169,7 @@ export const HomePage: React.FC<HomePageProps> = ({ language, onNavigate }) => {
       {/* CORE PLATFORM CAPABILITIES */}
       <section id="features-section" className="space-y-6">
         <div className="text-center max-w-2xl mx-auto space-y-2">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 dark:text-stone-50 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 dark:text-white tracking-tight">
             Comprehensive Plant Health Intelligence
           </h2>
           <p className="text-xs sm:text-sm text-stone-700 dark:text-stone-300 font-medium">
@@ -183,16 +183,16 @@ export const HomePage: React.FC<HomePageProps> = ({ language, onNavigate }) => {
             return (
               <div
                 key={idx}
-                className="glass-card-interactive rounded-2xl p-6 flex flex-col justify-between"
+                className="glass-card-interactive rounded-2xl p-6 flex flex-col justify-between border border-stone-200/80 dark:border-emerald-500/30"
               >
                 <div>
-                  <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/80 border border-emerald-200 dark:border-emerald-800 flex items-center justify-center text-emerald-700 dark:text-emerald-400 mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/90 border border-emerald-200 dark:border-emerald-500/40 flex items-center justify-center text-emerald-700 dark:text-emerald-400 mb-4 shadow-2xs">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="text-base font-bold text-stone-900 dark:text-stone-50 mb-2">
+                  <h3 className="text-base font-bold text-stone-900 dark:text-white mb-2">
                     {feat.title}
                   </h3>
-                  <p className="text-xs text-stone-700 dark:text-stone-200 leading-relaxed font-normal">
+                  <p className="text-xs text-stone-700 dark:text-stone-300 leading-relaxed font-normal">
                     {feat.description}
                   </p>
                 </div>
@@ -203,19 +203,19 @@ export const HomePage: React.FC<HomePageProps> = ({ language, onNavigate }) => {
       </section>
 
       {/* SUPPORTED CROPS DIRECTORY BANNER */}
-      <section className="glass-card rounded-3xl p-6 sm:p-8">
+      <section className="glass-card rounded-3xl p-6 sm:p-8 border border-stone-200/80 dark:border-emerald-500/30">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div>
-            <h3 className="text-lg font-bold text-stone-900 dark:text-stone-100 tracking-tight">
+            <h3 className="text-lg font-bold text-stone-900 dark:text-white tracking-tight">
               Supported Agricultural Crops & Varieties
             </h3>
-            <p className="text-xs text-stone-500 dark:text-stone-400">
+            <p className="text-xs text-stone-600 dark:text-stone-300 font-medium">
               Validated on diverse global field cultivars with robust resistance to variable lighting.
             </p>
           </div>
           <button
             onClick={() => onNavigate('scanner')}
-            className="px-4 py-2 text-xs font-semibold rounded-lg bg-emerald-700 text-white hover:bg-emerald-800 transition-colors self-start sm:self-auto cursor-pointer"
+            className="px-4 py-2 text-xs font-bold rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white transition-colors self-start sm:self-auto cursor-pointer shadow-xs"
           >
             Test a Crop Now
           </button>
@@ -225,12 +225,12 @@ export const HomePage: React.FC<HomePageProps> = ({ language, onNavigate }) => {
           {SUPPORTED_CROPS.map((crop) => (
             <div
               key={crop.id}
-              className="bg-white/80 dark:bg-stone-900/80 backdrop-blur-md border border-stone-200/80 dark:border-emerald-500/20 rounded-xl p-3.5 text-center shadow-2xs hover:shadow-xs transition-shadow"
+              className="bg-white/90 dark:bg-[#071912]/90 backdrop-blur-md border border-stone-200/80 dark:border-emerald-500/30 rounded-xl p-3.5 text-center shadow-2xs hover:shadow-xs transition-shadow"
             >
               <div className="text-3xl mb-1.5">{crop.icon}</div>
-              <div className="font-semibold text-xs text-stone-900 dark:text-stone-100">{crop.name}</div>
-              <div className="text-[11px] text-stone-500 dark:text-stone-400 font-medium">{crop.tamilName}</div>
-              <div className="mt-2 text-[10px] text-emerald-700 dark:text-emerald-400 font-medium">
+              <div className="font-bold text-xs text-stone-900 dark:text-white">{crop.name}</div>
+              <div className="text-[11px] text-stone-600 dark:text-stone-300 font-medium">{crop.tamilName}</div>
+              <div className="mt-2 text-[10px] text-emerald-700 dark:text-emerald-400 font-extrabold">
                 {crop.commonDiseases.length} Pathogens
               </div>
             </div>
@@ -239,20 +239,20 @@ export const HomePage: React.FC<HomePageProps> = ({ language, onNavigate }) => {
       </section>
 
       {/* BOTTOM CALL TO ACTION */}
-      <section className="text-center rounded-3xl bg-white/80 dark:bg-stone-900/75 backdrop-blur-md border border-stone-200/80 dark:border-emerald-500/30 p-8 sm:p-12 shadow-xs space-y-4">
-        <div className="inline-flex p-3 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-400">
+      <section className="text-center rounded-3xl bg-white/90 dark:bg-[#061a13]/90 backdrop-blur-md border border-stone-200/80 dark:border-emerald-500/40 p-8 sm:p-12 shadow-md space-y-4">
+        <div className="inline-flex p-3 rounded-2xl bg-emerald-100 dark:bg-emerald-950/90 border border-emerald-300 dark:border-emerald-500/40 text-emerald-800 dark:text-emerald-400">
           <Scan className="w-6 h-6" />
         </div>
-        <h2 className="text-2xl sm:text-3xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 dark:text-white tracking-tight">
           Ready to Inspect Your Plant?
         </h2>
-        <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-400 max-w-lg mx-auto">
+        <p className="text-xs sm:text-sm text-stone-700 dark:text-stone-300 max-w-lg mx-auto font-medium">
           Upload any plant leaf photo or try one of our realistic pre-loaded field samples to experience sub-second diagnostic classification.
         </p>
         <div className="pt-2">
           <button
             onClick={() => onNavigate('scanner')}
-            className="px-6 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-sm shadow-sm transition-colors inline-flex items-center gap-2 cursor-pointer"
+            className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-md transition-colors inline-flex items-center gap-2 cursor-pointer"
           >
             <span>Launch Plant Scanner</span>
             <ArrowRight className="w-4 h-4" />
