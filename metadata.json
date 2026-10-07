@@ -1,0 +1,6 @@
+{
+  "name": "AgroVision AI – Intelligent Plant Disease Detection & Farming Assistant",
+  "description": "AI-powered plant health intelligence with instant leaf disease detection, severity estimation, treatment guidance, weather risk analytics, and farming assistant.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
