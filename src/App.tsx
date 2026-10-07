@@ -87,15 +87,12 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen flex flex-col bg-emerald-50/20 dark:bg-[#030704] text-stone-900 dark:text-stone-100 transition-colors font-sans selection:bg-emerald-500 selection:text-white overflow-x-hidden">
+    <div className="relative min-h-screen flex flex-col bg-emerald-50/25 dark:bg-[#040805]/75 text-stone-900 dark:text-stone-50 transition-colors font-sans selection:bg-emerald-500 selection:text-white overflow-x-hidden">
       
-      {/* Animated Running Neurons Canvas Background (z-0) */}
+      {/* Animated Running Neurons Canvas Background */}
       <NeuralBackground isDark={isDark} />
 
-      {/* Dark/transparent overlay layer (z-[1]) */}
-      <div className="fixed inset-0 pointer-events-none z-[1] bg-stone-950/40 dark:bg-[#030704]/75" />
-
-      {/* Top Navigation (z-20) */}
+      {/* Top Navigation */}
       <div className="relative z-20">
         <Navbar
           currentPage={currentPage}

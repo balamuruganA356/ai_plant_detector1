@@ -315,10 +315,10 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
       
       {/* HEADER SECTION */}
       <div className="space-y-2">
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-stone-900 dark:text-stone-50 tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-stone-900 dark:text-white tracking-tight">
           {t.title}
         </h1>
-        <p className="text-xs sm:text-sm text-stone-700 dark:text-stone-300 max-w-2xl leading-relaxed font-medium">
+        <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 max-w-2xl leading-relaxed">
           {t.subtitle}
         </p>
       </div>
@@ -326,9 +326,9 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
       {/* ERROR ALERT */}
       {fileError && (
         <div className="p-4 rounded-xl bg-rose-50 dark:bg-rose-950/50 border border-rose-200 dark:border-rose-800 text-rose-800 dark:text-rose-300 text-xs flex items-center gap-3">
-          <AlertCircle className="w-5 h-5 shrink-0 text-rose-600" />
+          <AlertCircle className="w-5 h-5 shrink-0 text-rose-600 dark:text-rose-400" />
           <div className="flex-1">{fileError}</div>
-          <button onClick={() => setFileError(null)} className="text-rose-500 hover:text-rose-700">
+          <button onClick={() => setFileError(null)} className="text-rose-500 hover:text-rose-700 dark:text-rose-400 dark:hover:text-rose-200">
             <X className="w-4 h-4" />
           </button>
         </div>
@@ -363,7 +363,7 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
                   </button>
                   <button
                     onClick={stopCamera}
-                    className="px-4 py-2.5 rounded-xl bg-stone-200 dark:bg-stone-800 text-stone-700 dark:text-stone-300 font-semibold text-xs transition-colors"
+                    className="px-4 py-2.5 rounded-xl bg-stone-200 dark:bg-stone-800 text-stone-700 dark:text-stone-200 font-semibold text-xs transition-colors"
                   >
                     {t.stopCamera}
                   </button>
@@ -387,8 +387,8 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
                   </button>
                 </div>
 
-                <div className="flex items-center justify-center gap-2 text-xs text-stone-500 font-medium">
-                  <Check className="w-4 h-4 text-emerald-600" />
+                <div className="flex items-center justify-center gap-2 text-xs text-stone-600 dark:text-stone-300 font-medium">
+                  <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                   <span>{selectedFilename}</span>
                 </div>
 
@@ -422,7 +422,7 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
                   <p className="text-xs text-stone-600 dark:text-stone-300 mt-1">
                     {t.dropOrBrowse}
                   </p>
-                  <p className="text-[11px] text-stone-400 dark:text-stone-400 mt-1">
+                  <p className="text-[11px] text-stone-500 dark:text-stone-400 mt-1">
                     {t.formats}
                   </p>
                 </div>
@@ -462,10 +462,10 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
           <div className="space-y-3 pt-2">
             <div className="flex items-center justify-between">
               <h3 className="text-sm font-bold text-stone-900 dark:text-white flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-emerald-500" />
+                <Sparkles className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                 <span>{t.sampleLeavesTitle}</span>
               </h3>
-              <span className="text-[11px] text-stone-500 dark:text-stone-400 font-medium">1-Click Field Tests</span>
+              <span className="text-[11px] text-stone-500 dark:text-emerald-400 font-semibold">1-Click Field Tests</span>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
@@ -490,7 +490,7 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
                     <div className="font-bold text-xs text-stone-900 dark:text-white truncate">
                       {sample.plantName}
                     </div>
-                    <div className="text-[10px] text-stone-500 dark:text-stone-300 line-clamp-1">
+                    <div className="text-[10px] text-stone-600 dark:text-stone-300 line-clamp-1">
                       {sample.isHealthy ? 'Healthy Leaf' : sample.diseaseName.split(' ')[0]}
                     </div>
                   </div>
@@ -565,11 +565,11 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
                   {diagnosis.id}
                 </span>
                 <span className="text-stone-400">·</span>
-                <span className="text-xs text-stone-500 dark:text-stone-400">
+                <span className="text-xs text-stone-600 dark:text-stone-300">
                   {new Date(diagnosis.timestamp).toLocaleDateString(undefined, { dateStyle: 'medium' })}
                 </span>
                 <span className="text-stone-400">·</span>
-                <span className="text-[11px] font-semibold px-2 py-0.5 rounded-md bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300">
+                <span className="text-[11px] font-semibold px-2 py-0.5 rounded-md bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-200">
                   {diagnosis.mode === 'production' ? 'Production AI' : 'Demo Engine'}
                 </span>
               </div>
@@ -577,13 +577,13 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
               <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 dark:text-white tracking-tight flex items-center gap-2">
                 <span>{diagnosis.plant.name}</span>
                 <span className="text-stone-400 dark:text-stone-500 font-light">—</span>
-                <span className={diagnosis.disease.isHealthy ? 'text-emerald-500 dark:text-emerald-400' : 'text-amber-600 dark:text-amber-400'}>
+                <span className={diagnosis.disease.isHealthy ? 'text-emerald-600 dark:text-emerald-400' : 'text-amber-600 dark:text-amber-400'}>
                   {diagnosis.disease.name}
                 </span>
               </h2>
 
               {diagnosis.disease.scientificName && (
-                <p className="text-xs italic text-stone-500 dark:text-stone-400">
+                <p className="text-xs italic text-stone-600 dark:text-stone-300">
                   Pathogen taxon: {diagnosis.disease.scientificName}
                 </p>
               )}
@@ -595,11 +595,11 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
                 onClick={handleToggleVoice}
                 className={`px-3 py-2 text-xs font-semibold rounded-lg border flex items-center gap-1.5 transition-colors ${
                   isSpeaking
-                    ? 'bg-rose-50 text-rose-700 border-rose-300 dark:bg-rose-950/40'
-                    : 'bg-white dark:bg-stone-800 border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-300 hover:bg-stone-50'
+                    ? 'bg-rose-50 text-rose-700 border-rose-300 dark:bg-rose-950/40 dark:text-rose-300'
+                    : 'bg-white dark:bg-stone-800 border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-200 hover:bg-stone-50 dark:hover:bg-stone-700'
                 }`}
               >
-                {isSpeaking ? <VolumeX className="w-4 h-4 text-rose-600" /> : <Volume2 className="w-4 h-4 text-emerald-600" />}
+                {isSpeaking ? <VolumeX className="w-4 h-4 text-rose-600 dark:text-rose-400" /> : <Volume2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />}
                 <span>{isSpeaking ? tRes.stopReading : tRes.readResult}</span>
               </button>
 
@@ -608,11 +608,11 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
                 disabled={isSaved}
                 className={`px-3 py-2 text-xs font-semibold rounded-lg border flex items-center gap-1.5 transition-colors ${
                   isSaved
-                    ? 'bg-emerald-50 text-emerald-800 border-emerald-300 dark:bg-emerald-950/40'
-                    : 'bg-white dark:bg-stone-800 border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-300 hover:bg-stone-50'
+                    ? 'bg-emerald-50 text-emerald-800 border-emerald-300 dark:bg-emerald-950/40 dark:text-emerald-300'
+                    : 'bg-white dark:bg-stone-800 border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-200 hover:bg-stone-50 dark:hover:bg-stone-700'
                 }`}
               >
-                <Bookmark className="w-4 h-4 text-emerald-600" />
+                <Bookmark className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                 <span>{isSaved ? tRes.savedSuccess : tRes.saveDiagnosis}</span>
               </button>
 
@@ -641,24 +641,24 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
 
           {/* SECTION 12: EXPLAINABLE AI RESULT */}
           <div className="glass-card rounded-2xl p-6 space-y-4">
-            <div className="flex items-center gap-2 text-stone-900 dark:text-stone-100 font-bold text-base">
+            <div className="flex items-center gap-2 text-stone-900 dark:text-white font-bold text-base">
               <Sparkles className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
               <span>{tRes.whyAiDetected}</span>
             </div>
 
-            <p className="text-xs sm:text-sm text-stone-700 dark:text-stone-300 leading-relaxed glass-panel-subtle p-4 rounded-xl">
+            <p className="text-xs sm:text-sm text-stone-800 dark:text-stone-200 leading-relaxed glass-panel-subtle p-4 rounded-xl">
               {diagnosis.explanation}
             </p>
 
             <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-stone-600 dark:text-emerald-400 mb-2">
                 {tRes.visualSymptoms}
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {diagnosis.symptoms.map((symptom, idx) => (
                   <div
                     key={idx}
-                    className="p-3 rounded-xl glass-panel-subtle text-xs text-stone-700 dark:text-stone-300 flex items-start gap-2.5"
+                    className="p-3 rounded-xl glass-panel-subtle text-xs text-stone-800 dark:text-stone-200 flex items-start gap-2.5"
                   >
                     <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
                     <span>{symptom}</span>
@@ -673,14 +673,14 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
             
             {/* Immediate Field Actions */}
             <div className="glass-card rounded-2xl p-6 space-y-4">
-              <h3 className="font-bold text-stone-900 dark:text-stone-100 text-sm flex items-center gap-2">
+              <h3 className="font-bold text-stone-900 dark:text-white text-sm flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-rose-500" />
                 <span>{tRes.immediateActions}</span>
               </h3>
               <ul className="space-y-2.5">
                 {diagnosis.recommendations.immediateActions.map((action, idx) => (
-                  <li key={idx} className="text-xs text-stone-700 dark:text-stone-300 flex items-start gap-2.5 leading-relaxed">
-                    <span className="text-rose-600 font-bold shrink-0">{idx + 1}.</span>
+                  <li key={idx} className="text-xs text-stone-800 dark:text-stone-200 flex items-start gap-2.5 leading-relaxed">
+                    <span className="text-rose-600 dark:text-rose-400 font-bold shrink-0">{idx + 1}.</span>
                     <span>{action}</span>
                   </li>
                 ))}
@@ -688,12 +688,12 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
 
               {diagnosis.recommendations.organicTreatment && diagnosis.recommendations.organicTreatment.length > 0 && (
                 <div className="pt-3 border-t border-stone-200/60 dark:border-emerald-500/20">
-                  <h4 className="text-xs font-semibold text-emerald-800 dark:text-emerald-400 mb-2">
+                  <h4 className="text-xs font-semibold text-emerald-800 dark:text-emerald-300 mb-2">
                     Biological & Organic Controls:
                   </h4>
                   <ul className="space-y-1.5">
                     {diagnosis.recommendations.organicTreatment.map((ot, idx) => (
-                      <li key={idx} className="text-xs text-stone-600 dark:text-stone-400 flex items-start gap-2">
+                      <li key={idx} className="text-xs text-stone-700 dark:text-stone-300 flex items-start gap-2">
                         <span className="text-emerald-600 dark:text-emerald-400 font-bold">✓</span>
                         <span>{ot}</span>
                       </li>
@@ -705,13 +705,13 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
 
             {/* Long-Term Cultural Prevention */}
             <div className="glass-card rounded-2xl p-6 space-y-4">
-              <h3 className="font-bold text-stone-900 dark:text-stone-100 text-sm flex items-center gap-2">
+              <h3 className="font-bold text-stone-900 dark:text-white text-sm flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
                 <span>{tRes.longTermPrevention}</span>
               </h3>
               <ul className="space-y-2.5">
                 {diagnosis.recommendations.longTermPrevention.map((prev, idx) => (
-                  <li key={idx} className="text-xs text-stone-700 dark:text-stone-300 flex items-start gap-2.5 leading-relaxed">
+                  <li key={idx} className="text-xs text-stone-800 dark:text-stone-200 flex items-start gap-2.5 leading-relaxed">
                     <span className="text-emerald-600 dark:text-emerald-400 font-bold shrink-0">•</span>
                     <span>{prev}</span>
                   </li>
@@ -719,8 +719,8 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
               </ul>
 
               {diagnosis.recommendations.chemicalTreatmentGuidance && (
-                <div className="p-3 rounded-xl bg-amber-50/70 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 text-[11px] text-amber-900 dark:text-amber-300">
-                  <span className="font-semibold">Chemical Guidance Note: </span>
+                <div className="p-3 rounded-xl bg-amber-50/70 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 text-[11px] text-amber-950 dark:text-amber-200">
+                  <span className="font-semibold text-amber-900 dark:text-amber-300">Chemical Guidance Note: </span>
                   {diagnosis.recommendations.chemicalTreatmentGuidance.join(' ')}
                 </div>
               )}
@@ -732,7 +732,7 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
 
           {/* SECTION 46: FARMER FEEDBACK SYSTEM */}
           <div className="glass-card rounded-2xl p-6 text-center max-w-lg mx-auto space-y-3">
-            <h4 className="font-bold text-stone-900 dark:text-stone-100 text-sm">
+            <h4 className="font-bold text-stone-900 dark:text-white text-sm">
               {tRes.feedbackTitle}
             </h4>
 
@@ -748,7 +748,7 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
                     className={`px-4 py-2 rounded-lg text-xs font-semibold border flex items-center gap-1.5 transition-colors cursor-pointer ${
                       feedbackChoice === 'yes'
                         ? 'bg-emerald-700 text-white border-emerald-700'
-                        : 'bg-stone-50 dark:bg-stone-800/80 border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-300'
+                        : 'bg-stone-50 dark:bg-stone-800/80 border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-200 hover:text-stone-900 dark:hover:text-white'
                     }`}
                   >
                     <ThumbsUp className="w-3.5 h-3.5" />
@@ -759,7 +759,7 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
                     className={`px-4 py-2 rounded-lg text-xs font-semibold border flex items-center gap-1.5 transition-colors cursor-pointer ${
                       feedbackChoice === 'no'
                         ? 'bg-rose-700 text-white border-rose-700'
-                        : 'bg-stone-50 dark:bg-stone-800/80 border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-300'
+                        : 'bg-stone-50 dark:bg-stone-800/80 border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-200 hover:text-stone-900 dark:hover:text-white'
                     }`}
                   >
                     <ThumbsDown className="w-3.5 h-3.5" />
@@ -774,7 +774,7 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
                       value={feedbackText}
                       onChange={(e) => setFeedbackText(e.target.value)}
                       placeholder={tRes.feedbackPlaceholder}
-                      className="w-full text-xs p-2.5 rounded-xl glass-input text-stone-900 dark:text-stone-100"
+                      className="w-full text-xs p-2.5 rounded-xl glass-input text-stone-900 dark:text-white placeholder:text-stone-400 dark:placeholder:text-stone-500"
                     />
                     <button
                       onClick={handleSubmitFeedback}
@@ -796,7 +796,7 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
                 setSelectedImage(null);
                 setSelectedSampleKey(null);
               }}
-              className="px-5 py-2.5 rounded-xl bg-stone-100 dark:bg-stone-800 text-stone-800 dark:text-stone-200 hover:bg-stone-200 font-semibold text-xs transition-colors flex items-center gap-2"
+              className="px-5 py-2.5 rounded-xl bg-stone-100 dark:bg-stone-800 text-stone-800 dark:text-stone-100 hover:bg-stone-200 dark:hover:bg-stone-700 font-semibold text-xs transition-colors flex items-center gap-2"
             >
               <RotateCcw className="w-4 h-4" />
               <span>{tRes.analyzeAnother}</span>

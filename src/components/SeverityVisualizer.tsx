@@ -41,7 +41,7 @@ export const SeverityVisualizer: React.FC<SeverityVisualizerProps> = ({
   return (
     <div className="glass-card-interactive rounded-2xl p-5">
       <div className="flex items-center justify-between mb-3">
-        <h3 className="font-semibold text-stone-900 dark:text-stone-100 flex items-center gap-2 text-sm">
+        <h3 className="font-semibold text-stone-900 dark:text-white flex items-center gap-2 text-sm">
           <span>{t.severity}</span>
         </h3>
         <span
@@ -61,7 +61,7 @@ export const SeverityVisualizer: React.FC<SeverityVisualizerProps> = ({
             style={{ left: `calc(${Math.min(Math.max(score, 3), 97)}% - 2px)` }}
           />
         </div>
-        <div className="flex justify-between text-[11px] font-medium text-stone-400 dark:text-stone-500 mt-1.5">
+        <div className="flex justify-between text-[11px] font-semibold text-stone-600 dark:text-stone-300 mt-1.5">
           <span>Healthy (0%)</span>
           <span>Mild</span>
           <span>Moderate</span>
@@ -70,15 +70,15 @@ export const SeverityVisualizer: React.FC<SeverityVisualizerProps> = ({
         </div>
       </div>
 
-      <p className="text-xs text-stone-600 dark:text-stone-400 leading-relaxed mb-4">
+      <p className="text-xs text-stone-700 dark:text-stone-200 leading-relaxed mb-4">
         {description}
       </p>
 
       {/* Leaf Image & Segmentation Heatmap Toggle */}
       <div className="border border-stone-200/80 dark:border-emerald-500/20 rounded-xl overflow-hidden bg-stone-50/80 dark:bg-stone-950/80">
         <div className="p-3 bg-stone-100/70 dark:bg-stone-800/60 border-b border-stone-200 dark:border-stone-800 flex items-center justify-between">
-          <span className="text-xs font-medium text-stone-700 dark:text-stone-300 flex items-center gap-1.5">
-            <Info className="w-3.5 h-3.5 text-stone-500" />
+          <span className="text-xs font-semibold text-stone-800 dark:text-stone-100 flex items-center gap-1.5">
+            <Info className="w-3.5 h-3.5 text-stone-500 dark:text-stone-400" />
             <span>Leaf Lamina Segmentation</span>
           </span>
           <button

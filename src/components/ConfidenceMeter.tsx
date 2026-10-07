@@ -62,10 +62,10 @@ export const ConfidenceMeter: React.FC<ConfidenceMeterProps> = ({ confidence, la
           />
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-          <span className="text-2xl font-bold tracking-tight text-stone-900 dark:text-stone-100">
+          <span className="text-2xl font-bold tracking-tight text-stone-900 dark:text-white">
             {percentage}%
           </span>
-          <span className="text-[10px] uppercase font-semibold text-stone-500 dark:text-stone-400">
+          <span className="text-[10px] uppercase font-bold text-stone-500 dark:text-emerald-400/90">
             {t.aiConfidence}
           </span>
         </div>

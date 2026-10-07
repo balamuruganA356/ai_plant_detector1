@@ -150,10 +150,10 @@ export const AssistantPage: React.FC<AssistantPageProps> = ({ language, initialQ
             <Bot className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-xl sm:text-2xl font-extrabold text-stone-900 dark:text-stone-100 tracking-tight">
+            <h1 className="text-xl sm:text-2xl font-extrabold text-stone-900 dark:text-white tracking-tight">
               {t.title}
             </h1>
-            <p className="text-xs text-stone-500 dark:text-stone-400">
+            <p className="text-xs text-stone-600 dark:text-stone-300">
               {t.subtitle}
             </p>
           </div>
@@ -161,7 +161,7 @@ export const AssistantPage: React.FC<AssistantPageProps> = ({ language, initialQ
 
         <button
           onClick={handleClearChat}
-          className="px-3 py-1.5 rounded-lg border border-stone-200 dark:border-stone-800 text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 text-xs font-semibold flex items-center gap-1.5 transition-colors"
+          className="px-3 py-1.5 rounded-lg border border-stone-200 dark:border-stone-800 text-stone-700 dark:text-stone-200 hover:text-stone-900 dark:hover:text-white hover:bg-stone-100 dark:hover:bg-stone-800 text-xs font-semibold flex items-center gap-1.5 transition-colors"
         >
           <Trash2 className="w-3.5 h-3.5" />
           <span>{t.clearChat}</span>
@@ -199,7 +199,7 @@ export const AssistantPage: React.FC<AssistantPageProps> = ({ language, initialQ
                     className={`p-4 rounded-2xl text-xs sm:text-sm leading-relaxed ${
                       isUser
                         ? 'bg-emerald-700 text-white rounded-tr-xs shadow-md shadow-emerald-900/20'
-                        : 'glass-panel-subtle text-stone-900 dark:text-stone-100 rounded-tl-xs whitespace-pre-wrap'
+                        : 'glass-panel-subtle text-stone-900 dark:text-white rounded-tl-xs whitespace-pre-wrap'
                     }`}
                   >
                     {msg.text}
@@ -207,7 +207,7 @@ export const AssistantPage: React.FC<AssistantPageProps> = ({ language, initialQ
 
                   {/* Metadata & Audio Action */}
                   <div
-                    className={`flex items-center gap-2 text-[10px] text-stone-400 px-1 ${
+                    className={`flex items-center gap-2 text-[10px] text-stone-500 dark:text-stone-400 px-1 ${
                       isUser ? 'justify-end' : 'justify-start'
                     }`}
                   >
@@ -215,7 +215,7 @@ export const AssistantPage: React.FC<AssistantPageProps> = ({ language, initialQ
                     {!isUser && (
                       <button
                         onClick={() => handleSpeakText(msg.id, msg.text)}
-                        className="hover:text-stone-700 dark:hover:text-stone-200 transition-colors"
+                        className="hover:text-stone-700 dark:hover:text-emerald-300 transition-colors"
                         title="Read answer aloud"
                       >
                         {activeSpeechId === msg.id ? (
@@ -278,7 +278,7 @@ export const AssistantPage: React.FC<AssistantPageProps> = ({ language, initialQ
               onChange={(e) => setInputPrompt(e.target.value)}
               placeholder={t.placeholder}
               disabled={isTyping}
-              className="flex-1 text-xs sm:text-sm px-4 py-3 rounded-xl glass-input text-stone-900 dark:text-stone-100"
+              className="flex-1 text-xs sm:text-sm px-4 py-3 rounded-xl glass-input text-stone-900 dark:text-white placeholder:text-stone-400 dark:placeholder:text-stone-500"
             />
             <button
               type="submit"
@@ -293,8 +293,8 @@ export const AssistantPage: React.FC<AssistantPageProps> = ({ language, initialQ
 
       {/* QUICK SUGGESTIONS BOTTOM BAR */}
       <div className="space-y-2">
-        <div className="text-xs font-semibold text-stone-500 flex items-center gap-1.5">
-          <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
+        <div className="text-xs font-semibold text-stone-600 dark:text-emerald-400 flex items-center gap-1.5">
+          <Sparkles className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
           <span>{t.suggestedQueriesTitle}</span>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -302,7 +302,7 @@ export const AssistantPage: React.FC<AssistantPageProps> = ({ language, initialQ
             <button
               key={idx}
               onClick={() => handleSendMessage(item)}
-              className="px-3.5 py-1.5 rounded-xl glass-card-interactive text-stone-700 dark:text-stone-300 text-xs font-medium transition-colors text-left"
+              className="px-3.5 py-1.5 rounded-xl glass-card-interactive text-stone-700 dark:text-stone-200 hover:text-stone-900 dark:hover:text-white text-xs font-medium transition-colors text-left"
             >
               {item}
             </button>

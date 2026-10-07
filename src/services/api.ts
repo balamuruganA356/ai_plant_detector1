@@ -108,23 +108,16 @@ export const api = {
    * Retrieve diagnosis history
    */
   async getHistory(): Promise<PlantDiagnosis[]> {
-    let serverData: PlantDiagnosis[] = [];
     try {
       const res = await fetch('/api/history');
       if (res.ok) {
         const data = await res.json();
-        if (Array.isArray(data)) serverData = data;
+        if (Array.isArray(data) && data.length > 0) return data;
       }
     } catch {
       // ignore
     }
-    const localData = this.getLocalHistory();
-    const map = new Map<string, PlantDiagnosis>();
-    localData.forEach((item) => map.set(item.id, item));
-    serverData.forEach((item) => map.set(item.id, item));
-    return Array.from(map.values()).sort(
-      (a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
-    );
+    return this.getLocalHistory();
   },
 
   /**

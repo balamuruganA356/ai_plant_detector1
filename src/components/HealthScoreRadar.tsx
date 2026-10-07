@@ -42,15 +42,15 @@ export const HealthScoreRadar: React.FC<HealthScoreRadarProps> = ({ score, break
   return (
     <div className="glass-card-interactive rounded-2xl p-5">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="font-semibold text-stone-900 dark:text-stone-100 flex items-center gap-2 text-sm">
-          <HeartPulse className="w-4 h-4 text-emerald-600" />
+        <h3 className="font-semibold text-stone-900 dark:text-white flex items-center gap-2 text-sm">
+          <HeartPulse className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
           <span>{t.healthScore}</span>
         </h3>
         <div className="flex items-baseline gap-1">
           <span className={`text-3xl font-extrabold tracking-tight ${getScoreColor(score)}`}>
             {score}
           </span>
-          <span className="text-xs text-stone-400 font-medium">/ 100</span>
+          <span className="text-xs text-stone-500 dark:text-stone-400 font-medium">/ 100</span>
         </div>
       </div>
 
@@ -67,7 +67,7 @@ export const HealthScoreRadar: React.FC<HealthScoreRadarProps> = ({ score, break
         {metrics.map((m, idx) => (
           <div key={idx} className="space-y-1">
             <div className="flex justify-between items-center text-xs">
-              <span className="font-medium text-stone-700 dark:text-stone-300">
+              <span className="font-medium text-stone-800 dark:text-stone-200">
                 {m.label}
               </span>
               <span className={`font-semibold ${getScoreColor(m.value)}`}>
@@ -84,8 +84,8 @@ export const HealthScoreRadar: React.FC<HealthScoreRadarProps> = ({ score, break
         ))}
       </div>
 
-      <div className="mt-4 p-2.5 rounded-lg bg-stone-50 dark:bg-stone-950/70 border border-stone-200/70 dark:border-stone-800 text-[11px] text-stone-500 dark:text-stone-400 flex items-start gap-2">
-        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+      <div className="mt-4 p-2.5 rounded-lg bg-stone-50 dark:bg-stone-950/70 border border-stone-200/70 dark:border-stone-800 text-[11px] text-stone-600 dark:text-stone-300 flex items-start gap-2">
+        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
         <span>
           Scores ≥ 75 indicate favorable recovery probability with standard cultural interventions.
         </span>

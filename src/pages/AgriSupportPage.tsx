@@ -126,11 +126,11 @@ export const AgriSupportPage: React.FC<AgriSupportPageProps> = ({ language }) =>
           <span>{language === 'ta' ? 'அங்கீகரிக்கப்பட்ட வேளாண் மையங்கள்' : 'Verified Agricultural Support Directory'}</span>
         </div>
 
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-stone-900 dark:text-stone-100 tracking-tight flex items-center gap-2.5">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-stone-900 dark:text-white tracking-tight flex items-center gap-2.5">
           <MapPin className="w-7 h-7 text-emerald-600" />
           <span>{t.title}</span>
         </h1>
-        <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-400 max-w-2xl">
+        <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 max-w-2xl">
           {language === 'ta'
             ? 'கரூர், திருச்சி, கோயம்புத்தூர், மதுரை, தஞ்சாவூர் மற்றும் பிற மாவட்டங்களின் அரசு வேளாண் அலுவலகங்கள் (KVK), உரக் கடைகள் மற்றும் மண் பரிசோதனை நிலையங்களின் சரியான முகவரி மற்றும் தொலைபேசி எண்கள்.'
             : 'Real verified locations, extension offices (KVK), soil testing centers, and certified pesticide/fertilizer depots across Karur, Trichy, Coimbatore, Madurai, and other districts.'}
@@ -142,7 +142,7 @@ export const AgriSupportPage: React.FC<AgriSupportPageProps> = ({ language }) =>
         
         {/* District Tabs */}
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">
+          <label className="block text-xs font-bold uppercase tracking-wider text-stone-600 dark:text-emerald-400 mb-2">
             {language === 'ta' ? 'மாவட்டத்தை தேர்வு செய்யவும் (Select District):' : 'Select District:'}
           </label>
           <div className="flex flex-wrap gap-2">
@@ -155,7 +155,7 @@ export const AgriSupportPage: React.FC<AgriSupportPageProps> = ({ language }) =>
                   className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
                     isSelected
                       ? 'bg-emerald-700 text-white shadow-xs'
-                      : 'glass-panel-subtle text-stone-700 dark:text-stone-300 hover:border-emerald-500/50'
+                      : 'glass-panel-subtle text-stone-700 dark:text-stone-200 hover:border-emerald-500/50'
                   }`}
                 >
                   <MapPin className={`w-3.5 h-3.5 ${isSelected ? 'text-white' : 'text-stone-400'}`} />
@@ -175,7 +175,7 @@ export const AgriSupportPage: React.FC<AgriSupportPageProps> = ({ language }) =>
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={language === 'ta' ? 'கடை பெயர், முகவரி அல்லது ஊர் பெயரை தேடவும்...' : 'Search by store name, address, or location...'}
-              className="w-full text-xs pl-9 pr-3 py-2.5 rounded-xl glass-input text-stone-900 dark:text-stone-100"
+              className="w-full text-xs pl-9 pr-3 py-2.5 rounded-xl glass-input text-stone-900 dark:text-white"
             />
           </div>
 
@@ -191,7 +191,7 @@ export const AgriSupportPage: React.FC<AgriSupportPageProps> = ({ language }) =>
 
         {/* Category Type Filter Tabs */}
         <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-stone-200/60 dark:border-emerald-500/20">
-          <span className="text-[11px] font-semibold text-stone-400 mr-1">
+          <span className="text-[11px] font-semibold text-stone-500 dark:text-emerald-400 mr-1">
             {language === 'ta' ? 'வகை:' : 'Category:'}
           </span>
           {[
@@ -224,7 +224,7 @@ export const AgriSupportPage: React.FC<AgriSupportPageProps> = ({ language }) =>
       </div>
 
       {/* RESULTS COUNT BANNER */}
-      <div className="flex items-center justify-between text-xs text-stone-500 px-1">
+      <div className="flex items-center justify-between text-xs text-stone-600 dark:text-stone-300 px-1">
         <span>
           {language === 'ta'
             ? `${selectedDistrict === 'All' ? 'அனைத்து மாவட்டங்களிலும்' : selectedDistrict} ${filteredShops.length} வேளாண் உதவி மையங்கள் உள்ளன`
@@ -258,11 +258,11 @@ export const AgriSupportPage: React.FC<AgriSupportPageProps> = ({ language }) =>
                       <span className="text-[10px] text-stone-400">· {shop.type}</span>
                     </div>
 
-                    <h3 className="font-extrabold text-sm sm:text-base text-stone-900 dark:text-stone-100 leading-snug">
+                    <h3 className="font-extrabold text-sm sm:text-base text-stone-900 dark:text-white leading-snug">
                       {language === 'ta' && shop.tamilName ? shop.tamilName : shop.name}
                     </h3>
                     {language === 'ta' && shop.name && (
-                      <div className="text-[11px] text-stone-500 font-medium">
+                      <div className="text-[11px] text-stone-500 dark:text-stone-400 font-medium">
                         {shop.name}
                       </div>
                     )}
@@ -276,14 +276,14 @@ export const AgriSupportPage: React.FC<AgriSupportPageProps> = ({ language }) =>
               </div>
 
               {/* Address & Timings */}
-              <div className="text-xs text-stone-600 dark:text-stone-400 space-y-1.5 pt-1 glass-panel-subtle p-3 rounded-xl">
+              <div className="text-xs text-stone-600 dark:text-stone-300 space-y-1.5 pt-1 glass-panel-subtle p-3 rounded-xl">
                 <div className="flex items-start gap-2">
                   <MapPin className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                  <span className="font-medium text-stone-800 dark:text-stone-200">
+                  <span className="font-medium text-stone-800 dark:text-stone-100">
                     {language === 'ta' && shop.tamilAddress ? shop.tamilAddress : shop.address}
                   </span>
                 </div>
-                <div className="text-[11px] text-stone-500 pl-6 flex items-center justify-between">
+                <div className="text-[11px] text-stone-500 dark:text-stone-400 pl-6 flex items-center justify-between">
                   <span>{shop.openHours}</span>
                   <span className="font-semibold text-emerald-700 dark:text-emerald-400">
                     ~{shop.distanceKm} km
@@ -293,12 +293,12 @@ export const AgriSupportPage: React.FC<AgriSupportPageProps> = ({ language }) =>
 
               {/* Services offered list */}
               <div>
-                <div className="text-[11px] font-bold uppercase tracking-wider text-stone-500 mb-1.5">
+                <div className="text-[11px] font-bold uppercase tracking-wider text-stone-600 dark:text-emerald-400 mb-1.5">
                   {t.servicesOffered}:
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
                   {shop.services.map((srv, idx) => (
-                    <div key={idx} className="text-[11px] text-stone-700 dark:text-stone-300 flex items-start gap-1.5 leading-tight">
+                    <div key={idx} className="text-[11px] text-stone-700 dark:text-stone-200 flex items-start gap-1.5 leading-tight">
                       <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0 mt-0.5" />
                       <span>{srv}</span>
                     </div>
@@ -326,7 +326,7 @@ export const AgriSupportPage: React.FC<AgriSupportPageProps> = ({ language }) =>
                     '_blank'
                   );
                 }}
-                className="px-3.5 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 text-xs font-semibold transition-colors flex items-center gap-1.5 cursor-pointer"
+                className="px-3.5 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-stone-900 dark:hover:text-white text-xs font-semibold transition-colors flex items-center gap-1.5 cursor-pointer"
               >
                 <ExternalLink className="w-3.5 h-3.5" />
                 <span>{t.getDirections}</span>
@@ -337,7 +337,7 @@ export const AgriSupportPage: React.FC<AgriSupportPageProps> = ({ language }) =>
       </div>
 
       {filteredShops.length === 0 && (
-        <div className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-200 dark:border-stone-800 p-12 text-center text-xs text-stone-500 space-y-2">
+        <div className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-200 dark:border-stone-800 p-12 text-center text-xs text-stone-500 dark:text-stone-400 space-y-2">
           <p>{language === 'ta' ? 'பொருந்தும் வேளாண் மையங்கள் எதுவும் கிடைக்கவில்லை.' : 'No agricultural support centers match your filter.'}</p>
           <button
             onClick={() => {

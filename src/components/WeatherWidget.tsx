@@ -34,7 +34,7 @@ export const WeatherWidget: React.FC<WeatherWidgetProps> = ({ weather, language 
   return (
     <div className="glass-card-interactive rounded-2xl p-6">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="font-semibold text-stone-900 dark:text-stone-100 flex items-center gap-2 text-sm">
+        <h3 className="font-semibold text-stone-900 dark:text-white flex items-center gap-2 text-sm">
           <CloudRain className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
           <span>{t.weatherRiskAssessment}</span>
         </h3>
@@ -55,8 +55,8 @@ export const WeatherWidget: React.FC<WeatherWidgetProps> = ({ weather, language 
             <Thermometer className="w-4 h-4" />
           </div>
           <div>
-            <div className="text-[11px] text-stone-500 dark:text-stone-400 font-medium">{t.temperature}</div>
-            <div className="text-sm font-bold text-stone-800 dark:text-stone-100">{weather.temperature}°C</div>
+            <div className="text-[11px] text-stone-600 dark:text-emerald-400/90 font-semibold">{t.temperature}</div>
+            <div className="text-sm font-bold text-stone-900 dark:text-white">{weather.temperature}°C</div>
           </div>
         </div>
 
@@ -65,8 +65,8 @@ export const WeatherWidget: React.FC<WeatherWidgetProps> = ({ weather, language 
             <Droplets className="w-4 h-4" />
           </div>
           <div>
-            <div className="text-[11px] text-stone-500 dark:text-stone-400 font-medium">{t.humidity}</div>
-            <div className="text-sm font-bold text-stone-800 dark:text-stone-100">{weather.humidity}%</div>
+            <div className="text-[11px] text-stone-600 dark:text-emerald-400/90 font-semibold">{t.humidity}</div>
+            <div className="text-sm font-bold text-stone-900 dark:text-white">{weather.humidity}%</div>
           </div>
         </div>
 
@@ -75,8 +75,8 @@ export const WeatherWidget: React.FC<WeatherWidgetProps> = ({ weather, language 
             <CloudRain className="w-4 h-4" />
           </div>
           <div>
-            <div className="text-[11px] text-stone-500 dark:text-stone-400 font-medium">{t.rainfall}</div>
-            <div className="text-sm font-bold text-stone-800 dark:text-stone-100">{weather.rainfall} mm</div>
+            <div className="text-[11px] text-stone-600 dark:text-emerald-400/90 font-semibold">{t.rainfall}</div>
+            <div className="text-sm font-bold text-stone-900 dark:text-white">{weather.rainfall} mm</div>
           </div>
         </div>
 
@@ -85,8 +85,8 @@ export const WeatherWidget: React.FC<WeatherWidgetProps> = ({ weather, language 
             <Wind className="w-4 h-4" />
           </div>
           <div>
-            <div className="text-[11px] text-stone-500 dark:text-stone-400 font-medium">{t.windSpeed}</div>
-            <div className="text-sm font-bold text-stone-800 dark:text-stone-100">{weather.windSpeed} km/h</div>
+            <div className="text-[11px] text-stone-600 dark:text-emerald-400/90 font-semibold">{t.windSpeed}</div>
+            <div className="text-sm font-bold text-stone-900 dark:text-white">{weather.windSpeed} km/h</div>
           </div>
         </div>
       </div>
@@ -94,12 +94,12 @@ export const WeatherWidget: React.FC<WeatherWidgetProps> = ({ weather, language 
       {/* Microclimatic Risk Drivers */}
       {weather.riskFactors && weather.riskFactors.length > 0 && (
         <div className="mb-3">
-          <div className="text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1.5 flex items-center gap-1.5">
+          <div className="text-xs font-bold text-stone-800 dark:text-emerald-400 mb-1.5 flex items-center gap-1.5">
             <span>{t.riskFactorList}:</span>
           </div>
           <ul className="space-y-1">
             {weather.riskFactors.map((factor, idx) => (
-              <li key={idx} className="text-xs text-stone-600 dark:text-stone-400 flex items-start gap-2">
+              <li key={idx} className="text-xs text-stone-700 dark:text-stone-200 flex items-start gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0 mt-1.5" />
                 <span>{factor}</span>
               </li>
@@ -109,8 +109,8 @@ export const WeatherWidget: React.FC<WeatherWidgetProps> = ({ weather, language 
       )}
 
       {weather.advice && (
-        <div className="p-3 rounded-lg bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-xs text-stone-700 dark:text-stone-300 leading-relaxed">
-          <span className="font-semibold text-stone-900 dark:text-stone-100">Agronomic Advisory: </span>
+        <div className="p-3 rounded-lg bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-xs text-stone-700 dark:text-stone-200 leading-relaxed">
+          <span className="font-bold text-stone-900 dark:text-white">Agronomic Advisory: </span>
           {weather.advice}
         </div>
       )}

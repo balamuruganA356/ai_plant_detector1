@@ -35,7 +35,95 @@ interface SavedDiagnosis {
   mode: 'production' | 'demo';
 }
 
-const diagnosisHistoryStore: SavedDiagnosis[] = [];
+const diagnosisHistoryStore: SavedDiagnosis[] = [
+  {
+    id: 'AGRO-TOM-001',
+    timestamp: new Date(Date.now() - 3600000 * 24 * 3).toISOString(),
+    plant: { name: 'Tomato', scientificName: 'Solanum lycopersicum', confidence: 0.97 },
+    disease: { name: 'Early Blight', scientificName: 'Alternaria solani', confidence: 0.94, isHealthy: false },
+    severity: { level: 'Moderate', score: 58, description: 'Approximately 58% of the lower leaf blade shows concentric target spots.' },
+    healthScore: 62,
+    healthScoreBreakdown: { severityScore: 42, leafDamageScore: 48, colorVigorScore: 65, symptomIntensityScore: 58, confidenceFactor: 95 },
+    symptoms: ['Brown concentric rings', 'Yellow chlorotic halo', 'Premature leaf yellowing', 'Margin necrosis'],
+    explanation: 'Detected classic concentric bullseye rings and yellowing margins characteristic of Alternaria solani.',
+    recommendations: {
+      immediateActions: ['Remove and destroy lowest infected leaves', 'Switch to root-level drip irrigation'],
+      longTermPrevention: ['3-year non-solanaceous crop rotation', 'Apply organic straw mulch layer'],
+      organicTreatment: ['Neem oil 0.5% foliar spray every 7 days'],
+      chemicalTreatmentGuidance: ['Preventative Mancozeb or Chlorothalonil application as per local rules']
+    },
+    preventionTips: ['Maintain proper plant spacing (60 cm)', 'Keep foliage completely dry'],
+    weatherRisk: {
+      temperature: 28.5,
+      humidity: 82,
+      rainfall: 14.2,
+      windSpeed: 11.5,
+      riskLevel: 'High',
+      riskFactors: ['High relative humidity > 80%', 'Recent rainfall', 'Extended leaf wetness'],
+      advice: 'Avoid overhead watering; fungal spores spread rapidly in humid air.'
+    },
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="%234d8834"/><circle cx="45" cy="45" r="15" fill="%2393621c"/></svg>',
+    mode: 'demo'
+  },
+  {
+    id: 'AGRO-POT-002',
+    timestamp: new Date(Date.now() - 3600000 * 24 * 1).toISOString(),
+    plant: { name: 'Potato', scientificName: 'Solanum tuberosum', confidence: 0.95 },
+    disease: { name: 'Late Blight', scientificName: 'Phytophthora infestans', confidence: 0.92, isHealthy: false },
+    severity: { level: 'Severe', score: 72, description: 'Extensive water-soaked necrotic lesions across leaf tips.' },
+    healthScore: 42,
+    healthScoreBreakdown: { severityScore: 28, leafDamageScore: 35, colorVigorScore: 50, symptomIntensityScore: 40, confidenceFactor: 92 },
+    symptoms: ['Water-soaked dark lesions', 'White downy mildew under leaf', 'Petiole collapse'],
+    explanation: 'Rapidly spreading water-soaked blotches with downy fungal margin indicate Phytophthora infestans.',
+    recommendations: {
+      immediateActions: ['Cut and safely remove blighted vines', 'Quarantine neighboring potato rows'],
+      longTermPrevention: ['Hill soil deep over tubers', 'Plant certified indexed seed tubers'],
+      organicTreatment: ['Copper sulfate Bordeaux mixture prior to rain'],
+      chemicalTreatmentGuidance: ['Systemic oomycete fungicide application']
+    },
+    preventionTips: ['Destroy cull piles', 'Scout daily during misty weather'],
+    weatherRisk: {
+      temperature: 19.0,
+      humidity: 88,
+      rainfall: 18.0,
+      windSpeed: 14.0,
+      riskLevel: 'High',
+      riskFactors: ['Cool wet climate', 'Humidity > 85%'],
+      advice: 'Late blight pressure is critical in cool, drizzly conditions.'
+    },
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="%233b571b"/><path d="M30 30 Q60 50 70 70" stroke="%23141414" stroke-width="12"/></svg>',
+    mode: 'demo'
+  },
+  {
+    id: 'AGRO-APP-003',
+    timestamp: new Date(Date.now() - 3600000 * 12).toISOString(),
+    plant: { name: 'Apple', scientificName: 'Malus domestica', confidence: 0.98 },
+    disease: { name: 'Healthy Leaf', scientificName: 'Malus domestica', confidence: 0.98, isHealthy: true },
+    severity: { level: 'Healthy', score: 0, description: 'Zero detectable pathology; leaf tissue is intact.' },
+    healthScore: 97,
+    healthScoreBreakdown: { severityScore: 100, leafDamageScore: 100, colorVigorScore: 98, symptomIntensityScore: 98, confidenceFactor: 98 },
+    symptoms: ['Uniform chlorophyll distribution', 'Crisp serrated margins', 'Supple petiole'],
+    explanation: 'Leaf exhibits pristine morphological vigor with zero necrotic lesions or fungal growth.',
+    recommendations: {
+      immediateActions: ['Maintain routine orchard scouting schedule'],
+      longTermPrevention: ['Dormant season pruning for canopy ventilation'],
+      organicTreatment: ['Beneficial foliar seaweed spray'],
+      chemicalTreatmentGuidance: ['None required']
+    },
+    preventionTips: ['Rake autumn leaf litter to reduce ascospore carryover'],
+    weatherRisk: {
+      temperature: 22.0,
+      humidity: 55,
+      rainfall: 0,
+      windSpeed: 8.0,
+      riskLevel: 'Low',
+      riskFactors: ['Optimal mild dry weather'],
+      advice: 'Current dry conditions present minimal fungal infection risk.'
+    },
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="%2355993a"/></svg>',
+    mode: 'demo'
+  }
+];
 
 const feedbackStore: any[] = [];
 

@@ -95,7 +95,7 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
         <h1 className="text-2xl sm:text-3xl font-extrabold text-stone-900 dark:text-white tracking-tight">
           {t.title}
         </h1>
-        <p className="text-xs sm:text-sm text-stone-700 dark:text-stone-300 max-w-2xl font-medium">
+        <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 max-w-2xl">
           {t.subtitle}
         </p>
       </div>
@@ -108,7 +108,7 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
               ? '!border-emerald-500/50 text-emerald-900 dark:text-emerald-300'
               : healthTrendStatus === 'declining'
               ? '!border-rose-500/50 text-rose-900 dark:text-rose-300'
-              : 'text-stone-700 dark:text-stone-300'
+              : 'text-stone-700 dark:text-stone-200'
           }`}
         >
           <div className="flex items-center gap-2.5">
@@ -135,7 +135,7 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
       )}
 
       {/* SEARCH & FILTERS BAR */}
-      <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 glass-card p-4 rounded-2xl shadow-xs border border-stone-200/80 dark:border-emerald-500/30">
+      <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 glass-card p-4 rounded-2xl shadow-xs">
         
         {/* Search Input */}
         <div className="sm:col-span-2 relative">
@@ -145,7 +145,7 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder={t.searchPlaceholder}
-            className="w-full text-xs pl-9 pr-3 py-2 rounded-xl glass-input text-stone-900 dark:text-stone-100"
+            className="w-full text-xs pl-9 pr-3 py-2 rounded-xl glass-input text-stone-900 dark:text-white"
           />
         </div>
 
@@ -154,7 +154,7 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
           <select
             value={selectedPlant}
             onChange={(e) => setSelectedPlant(e.target.value)}
-            className="w-full text-xs py-2 px-3 rounded-xl glass-input text-stone-900 dark:text-stone-100"
+            className="w-full text-xs py-2 px-3 rounded-xl glass-input text-stone-900 dark:text-white"
           >
             <option value="All">{t.filterAllPlants}</option>
             {uniquePlants.map((plant) => (
@@ -170,7 +170,7 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
           <select
             value={selectedSeverity}
             onChange={(e) => setSelectedSeverity(e.target.value)}
-            className="w-full text-xs py-2 px-3 rounded-xl glass-input text-stone-900 dark:text-stone-100"
+            className="w-full text-xs py-2 px-3 rounded-xl glass-input text-stone-900 dark:text-white"
           >
             <option value="All">{t.filterAllSeverities}</option>
             <option value="Healthy">Healthy</option>
@@ -184,11 +184,11 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
 
       {/* HISTORY TABLE & CARDS */}
       {filteredRecords.length > 0 ? (
-        <div className="glass-card rounded-2xl shadow-sm overflow-hidden border border-stone-200/80 dark:border-emerald-500/30">
+        <div className="glass-card rounded-2xl shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
-                <tr className="bg-stone-50 dark:bg-emerald-950/80 border-b border-stone-200 dark:border-emerald-500/30 text-stone-500 dark:text-stone-300 font-bold uppercase tracking-wider text-[11px]">
+                <tr className="bg-stone-50 dark:bg-stone-950/80 border-b border-stone-200 dark:border-stone-800 text-stone-700 dark:text-emerald-400 font-semibold uppercase tracking-wider text-[11px]">
                   <th className="py-3 px-4">Sample</th>
                   <th className="py-3 px-4">{t.plant}</th>
                   <th className="py-3 px-4">{t.disease}</th>
@@ -199,7 +199,7 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
                   <th className="py-3 px-4 text-right">{t.actions}</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-stone-100 dark:divide-emerald-500/15">
+              <tbody className="divide-y divide-stone-100 dark:divide-stone-800/80">
                 {filteredRecords.map((item) => (
                   <tr
                     key={item.id}
@@ -207,7 +207,7 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
                       onSelectDiagnosis(item);
                       onNavigate('scanner');
                     }}
-                    className="hover:bg-stone-50/80 dark:hover:bg-emerald-950/40 transition-colors cursor-pointer group"
+                    className="hover:bg-stone-50/80 dark:hover:bg-stone-800/40 transition-colors cursor-pointer group"
                   >
                     {/* Thumbnail */}
                     <td className="py-3 px-4">
@@ -237,21 +237,21 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
                     </td>
 
                     {/* Confidence */}
-                    <td className="py-3 px-4 font-semibold text-stone-600 dark:text-stone-300">
+                    <td className="py-3 px-4 font-medium text-stone-600 dark:text-stone-300">
                       {Math.round(item.disease.confidence * 100)}%
                     </td>
 
                     {/* Severity */}
                     <td className="py-3 px-4">
                       <span
-                        className={`px-2 py-0.5 rounded-md text-[11px] font-bold border ${
+                        className={`px-2 py-0.5 rounded-md text-[11px] font-semibold border ${
                           item.severity.level === 'Healthy'
-                            ? 'bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-emerald-950/80 dark:text-emerald-300 dark:border-emerald-500/40'
+                            ? 'bg-emerald-50 text-emerald-800 border-emerald-200'
                             : item.severity.level === 'Mild'
-                            ? 'bg-lime-50 text-lime-800 border-lime-200 dark:bg-lime-950/80 dark:text-lime-300 dark:border-lime-500/40'
+                            ? 'bg-lime-50 text-lime-800 border-lime-200'
                             : item.severity.level === 'Moderate'
-                            ? 'bg-amber-50 text-amber-800 border-amber-200 dark:bg-amber-950/80 dark:text-amber-300 dark:border-amber-500/40'
-                            : 'bg-rose-50 text-rose-800 border-rose-200 dark:bg-rose-950/80 dark:text-rose-300 dark:border-rose-500/40'
+                            ? 'bg-amber-50 text-amber-800 border-amber-200'
+                            : 'bg-rose-50 text-rose-800 border-rose-200'
                         }`}
                       >
                         {item.severity.level} ({item.severity.score}%)
@@ -259,12 +259,12 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
                     </td>
 
                     {/* Health Score */}
-                    <td className="py-3 px-4 font-extrabold text-emerald-700 dark:text-emerald-400">
+                    <td className="py-3 px-4 font-bold text-emerald-700 dark:text-emerald-400">
                       {item.healthScore} / 100
                     </td>
 
                     {/* Date */}
-                    <td className="py-3 px-4 text-stone-500 dark:text-stone-300 whitespace-nowrap font-medium">
+                    <td className="py-3 px-4 text-stone-500 dark:text-stone-400 whitespace-nowrap">
                       {new Date(item.timestamp).toLocaleDateString(undefined, {
                         month: 'short',
                         day: 'numeric',
@@ -280,7 +280,7 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
                           e.stopPropagation();
                           generateDiagnosisPdfReport(item);
                         }}
-                        className="p-1.5 text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors rounded-md hover:bg-stone-200/60 dark:hover:bg-stone-800"
+                        className="p-1.5 text-stone-500 hover:text-stone-900 dark:text-stone-400 dark:hover:text-white transition-colors rounded-md hover:bg-stone-200/60 dark:hover:bg-stone-800"
                         title="Download PDF"
                       >
                         <FileDown className="w-4 h-4" />
@@ -289,7 +289,7 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
                       <button
                         type="button"
                         onClick={(e) => handleDelete(item.id, e)}
-                        className="p-1.5 text-stone-400 hover:text-rose-600 transition-colors rounded-md hover:bg-rose-50 dark:hover:bg-rose-950/40"
+                        className="p-1.5 text-stone-400 hover:text-rose-600 dark:text-stone-400 dark:hover:text-rose-400 transition-colors rounded-md hover:bg-rose-50 dark:hover:bg-rose-950/40"
                         title={t.deleteItem}
                       >
                         <Trash2 className="w-4 h-4" />
@@ -302,7 +302,7 @@ export const HistoryPage: React.FC<HistoryPageProps> = ({
           </div>
         </div>
       ) : (
-        <div className="glass-card rounded-2xl border border-stone-200/80 dark:border-emerald-500/30 p-12 text-center text-xs text-stone-600 dark:text-stone-300 font-medium">
+        <div className="bg-white dark:bg-stone-900 rounded-xl border border-stone-200 dark:border-stone-800 p-12 text-center text-xs text-stone-500 dark:text-stone-400">
           {t.noRecordsFound}
         </div>
       )}

@@ -71,7 +71,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className="font-extrabold text-lg text-stone-900 dark:text-white tracking-tight flex items-center gap-1.5">
                 AgroVision <span className="text-emerald-600 dark:text-emerald-400 font-bold">AI</span>
               </span>
-              <span className="block text-[10px] text-stone-500 dark:text-stone-400 font-medium tracking-wide">
+              <span className="block text-[10px] text-stone-500 dark:text-emerald-300/70 font-medium tracking-wide">
                 Crop Health Intelligence
               </span>
             </div>
@@ -89,10 +89,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   className={`px-3 py-2 text-sm font-medium rounded-lg flex items-center gap-1.5 transition-colors ${
                     isActive
                       ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 font-semibold'
-                      : 'text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-100 dark:hover:bg-stone-800/60'
+                      : 'text-stone-700 dark:text-stone-200 hover:text-stone-900 dark:hover:text-white hover:bg-stone-100 dark:hover:bg-stone-800/60'
                   }`}
                 >
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-emerald-700 dark:text-emerald-400' : 'text-stone-400 dark:text-stone-500'}`} />
+                  <Icon className={`w-4 h-4 ${isActive ? 'text-emerald-700 dark:text-emerald-400' : 'text-stone-400 dark:text-stone-400'}`} />
                   <span>{item.label}</span>
                 </button>
               );
@@ -107,8 +107,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               title={mode === 'production' ? 'Production AI active' : 'Agronomic Demo engine active'}
               className={`px-2.5 py-1 text-[11px] font-semibold rounded-md border flex items-center gap-1.5 ${
                 mode === 'production' 
-                  ? 'bg-emerald-50 border-emerald-200 text-emerald-800 dark:bg-emerald-950/40 dark:border-emerald-800 dark:text-emerald-300'
-                  : 'bg-stone-100 border-stone-200 text-stone-700 dark:bg-stone-800 dark:border-stone-700 dark:text-stone-300'
+                  ? 'bg-emerald-50 border-emerald-200 text-emerald-800 dark:bg-emerald-950/40 dark:border-emerald-700 dark:text-emerald-300'
+                  : 'bg-stone-100 border-stone-200 text-stone-700 dark:bg-stone-800/80 dark:border-stone-600 dark:text-stone-200'
               }`}
             >
               <span className={`w-2 h-2 rounded-full ${mode === 'production' ? 'bg-emerald-500 animate-pulse' : 'bg-stone-400'}`} />
@@ -120,7 +120,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 type="button"
                 onClick={() => onLanguageChange(language === 'en' ? 'ta' : 'en')}
-                className="px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 text-stone-700 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors flex items-center gap-1.5 shadow-2xs"
+                className="px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-900 text-stone-700 dark:text-stone-100 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors flex items-center gap-1.5 shadow-2xs"
                 title="Switch Language (English / தமிழ்)"
               >
                 <Globe className="w-3.5 h-3.5 text-stone-400" />
@@ -133,7 +133,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               type="button"
               onClick={onToggleTheme}
               aria-label="Toggle Theme"
-              className="p-2 rounded-lg border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 text-stone-600 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors shadow-2xs"
+              className="p-2 rounded-lg border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-900 text-stone-600 dark:text-stone-100 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors shadow-2xs"
             >
               {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-stone-600" />}
             </button>
@@ -153,7 +153,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               type="button"
               onClick={() => onLanguageChange(language === 'en' ? 'ta' : 'en')}
-              className="px-2 py-1 text-xs font-medium rounded-md border border-stone-200 dark:border-stone-800 text-stone-700 dark:text-stone-300"
+              className="px-2 py-1 text-xs font-medium rounded-md border border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-100"
             >
               {language === 'en' ? 'தமிழ்' : 'EN'}
             </button>
@@ -161,7 +161,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               type="button"
               onClick={onToggleTheme}
-              className="p-1.5 rounded-md border border-stone-200 dark:border-stone-800 text-stone-600 dark:text-stone-300"
+              className="p-1.5 rounded-md border border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-100"
             >
               {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-stone-600" />}
             </button>
@@ -169,7 +169,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800"
+              className="p-2 rounded-lg text-stone-700 dark:text-stone-100 hover:bg-stone-100 dark:hover:bg-stone-800"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -179,7 +179,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-b border-stone-200 dark:border-emerald-500/30 bg-white dark:bg-[#050f0c]/96 backdrop-blur-xl px-4 pt-2 pb-4 space-y-1">
+        <div className="lg:hidden border-b border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 px-4 pt-2 pb-4 space-y-1">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = currentPage === item.id;
@@ -189,11 +189,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => handleSelectPage(item.id)}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg text-left transition-colors ${
                   isActive
-                    ? 'bg-emerald-50 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300 font-semibold'
-                    : 'text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-emerald-950/40'
+                    ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 font-semibold'
+                    : 'text-stone-700 dark:text-stone-100 hover:bg-stone-100 dark:hover:bg-stone-800'
                 }`}
               >
-                <Icon className={`w-5 h-5 ${isActive ? 'text-emerald-600 dark:text-emerald-400' : 'text-stone-400 dark:text-stone-500'}`} />
+                <Icon className={`w-5 h-5 ${isActive ? 'text-emerald-700' : 'text-stone-400'}`} />
                 <span>{item.label}</span>
               </button>
             );

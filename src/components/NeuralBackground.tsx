@@ -54,23 +54,23 @@ export const NeuralBackground: React.FC<NeuralBackgroundProps> = ({ isDark = tru
     let height = (canvas.height = window.innerHeight);
 
     const isMobile = width < 768;
-    const neuronCount = isMobile ? 25 : 45;
-    const connectionDistance = isMobile ? 130 : 165;
+    const neuronCount = isMobile ? 42 : 80;
+    const connectionDistance = isMobile ? 140 : 185;
 
-    // Subtle bio-agricultural color palette
+    // Vibrant bio-agricultural color palette
     const darkPalette = [
-      { core: '#10b981', glow: 'rgba(16, 185, 129, 0.15)' }, // emerald
-      { core: '#34d399', glow: 'rgba(52, 211, 153, 0.15)' }, // mint
-      { core: '#06b6d4', glow: 'rgba(6, 182, 212, 0.15)' },  // cyan
-      { core: '#a3e635', glow: 'rgba(163, 230, 53, 0.12)' }, // lime green
+      { core: '#10b981', glow: 'rgba(16, 185, 129, 0.6)' }, // vibrant emerald
+      { core: '#34d399', glow: 'rgba(52, 211, 153, 0.65)' }, // electric mint
+      { core: '#06b6d4', glow: 'rgba(6, 182, 212, 0.6)' },  // cyan
+      { core: '#a3e635', glow: 'rgba(163, 230, 53, 0.55)' }, // cyber lime green
     ];
 
-    // Subdued palette for light mode
+    // High-contrast, rich bio-green palette for light mode so neurons pop vividly!
     const lightPalette = [
-      { core: '#047857', glow: 'rgba(4, 120, 87, 0.12)' },
-      { core: '#065f46', glow: 'rgba(6, 95, 70, 0.12)' },
-      { core: '#0f766e', glow: 'rgba(15, 118, 110, 0.12)' },
-      { core: '#15803d', glow: 'rgba(21, 128, 61, 0.12)' },
+      { core: '#047857', glow: 'rgba(4, 120, 87, 0.45)' },   // deep emerald
+      { core: '#065f46', glow: 'rgba(6, 95, 70, 0.45)' },    // forest green
+      { core: '#0f766e', glow: 'rgba(15, 118, 110, 0.42)' }, // deep teal
+      { core: '#15803d', glow: 'rgba(21, 128, 61, 0.45)' },  // rich foliage green
     ];
 
     const palette = isDark ? darkPalette : lightPalette;
@@ -78,25 +78,25 @@ export const NeuralBackground: React.FC<NeuralBackgroundProps> = ({ isDark = tru
     const neurons: Neuron[] = [];
     for (let i = 0; i < neuronCount; i++) {
       const p = palette[i % palette.length];
-      const baseRadius = Math.random() * 1.5 + 1.2;
+      const baseRadius = Math.random() * 2.8 + 2.2;
       neurons.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
+        vx: (Math.random() - 0.5) * 0.85,
+        vy: (Math.random() - 0.5) * 0.85,
         radius: baseRadius,
         baseRadius,
         pulsePhase: Math.random() * Math.PI * 2,
-        pulseSpeed: 0.015 + Math.random() * 0.02,
+        pulseSpeed: 0.025 + Math.random() * 0.035,
         color: p.core,
         glowColor: p.glow,
-        energy: 0.2,
+        energy: 0.3,
       });
     }
 
     const pulses: Pulse[] = [];
     const shockwaves: Shockwave[] = [];
-    const maxPulses = isMobile ? 10 : 20;
+    const maxPulses = isMobile ? 18 : 36;
 
     // Mouse coordinates
     const mouse = { x: -1000, y: -1000, active: false };
@@ -113,21 +113,22 @@ export const NeuralBackground: React.FC<NeuralBackgroundProps> = ({ isDark = tru
       mouse.y = -1000;
     };
 
-    // Click triggers subtle neural shockwave ripple
+    // Click triggers neural bio-electric shockwave ripple!
     const handleClick = (e: MouseEvent) => {
       shockwaves.push({
         x: e.clientX,
         y: e.clientY,
-        radius: 8,
-        maxRadius: Math.max(width, height) * 0.35,
-        alpha: 0.45,
+        radius: 10,
+        maxRadius: Math.max(width, height) * 0.45,
+        alpha: 0.85,
       });
 
-      // Energize nearest neurons softly
+      // Energize nearest neurons and fire pulses
       neurons.forEach((n, idx) => {
         const dist = Math.hypot(n.x - e.clientX, n.y - e.clientY);
-        if (dist < 200) {
-          n.energy = 0.6;
+        if (dist < 260) {
+          n.energy = 1.0;
+          // Spawn outgoing impulse
           for (let targetIdx = 0; targetIdx < neurons.length; targetIdx++) {
             if (targetIdx !== idx) {
               const d2 = Math.hypot(n.x - neurons[targetIdx].x, n.y - neurons[targetIdx].y);
@@ -136,8 +137,8 @@ export const NeuralBackground: React.FC<NeuralBackgroundProps> = ({ isDark = tru
                   fromIndex: idx,
                   toIndex: targetIdx,
                   progress: 0,
-                  speed: 0.02 + Math.random() * 0.02,
-                  intensity: 0.6,
+                  speed: 0.03 + Math.random() * 0.03,
+                  intensity: 1.0,
                 });
               }
             }
@@ -151,19 +152,20 @@ export const NeuralBackground: React.FC<NeuralBackgroundProps> = ({ isDark = tru
       shockwaves.push({
         x: width / 2,
         y: height / 2,
-        radius: 8,
-        maxRadius: Math.max(width, height) * 0.4,
-        alpha: 0.5,
+        radius: 10,
+        maxRadius: Math.max(width, height) * 0.6,
+        alpha: 0.9,
       });
-      for (let i = 0; i < 8; i++) {
+      // Fire pulses across random pairs
+      for (let i = 0; i < 15; i++) {
         const from = Math.floor(Math.random() * neurons.length);
-        const to = (from + 1 + Math.floor(Math.random() * 4)) % neurons.length;
+        const to = (from + 1 + Math.floor(Math.random() * 5)) % neurons.length;
         pulses.push({
           fromIndex: from,
           toIndex: to,
           progress: 0,
-          speed: 0.02 + Math.random() * 0.02,
-          intensity: 0.6,
+          speed: 0.03 + Math.random() * 0.02,
+          intensity: 1.0,
         });
       }
     };
@@ -186,18 +188,22 @@ export const NeuralBackground: React.FC<NeuralBackgroundProps> = ({ isDark = tru
 
       activeSynapseCount = 0;
       const axonColorBase = isDark ? '52, 211, 153' : '4, 120, 87';
+      const glowMultiplier = ultraGlow ? 1.5 : 1.0;
 
       // 1. Draw Shockwaves
       for (let s = shockwaves.length - 1; s >= 0; s--) {
         const sw = shockwaves[s];
-        sw.radius += 6;
-        sw.alpha *= 0.95;
+        sw.radius += 8;
+        sw.alpha *= 0.96;
 
         ctx.beginPath();
         ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(52, 211, 153, ${sw.alpha * 0.3})`;
-        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = `rgba(52, 211, 153, ${sw.alpha * 0.7})`;
+        ctx.lineWidth = 2.5;
+        ctx.shadowColor = '#10b981';
+        ctx.shadowBlur = 15;
         ctx.stroke();
+        ctx.shadowBlur = 0;
 
         if (sw.radius >= sw.maxRadius || sw.alpha <= 0.02) {
           shockwaves.splice(s, 1);
@@ -217,23 +223,23 @@ export const NeuralBackground: React.FC<NeuralBackgroundProps> = ({ isDark = tru
             activeSynapseCount++;
             const proximityFactor = 1 - dist / connectionDistance;
             const energyFactor = (n1.energy + n2.energy) * 0.5;
-            const alpha = Math.min(proximityFactor * (isDark ? 0.20 : 0.15) + energyFactor * 0.15, 0.35);
+            const alpha = Math.min(proximityFactor * (isDark ? 0.45 : 0.35) + energyFactor * 0.3, 0.85);
 
             ctx.beginPath();
             ctx.moveTo(n1.x, n1.y);
             ctx.lineTo(n2.x, n2.y);
-            ctx.strokeStyle = `rgba(${axonColorBase}, ${alpha})`;
-            ctx.lineWidth = 0.8;
+            ctx.strokeStyle = `rgba(${axonColorBase}, ${alpha * glowMultiplier})`;
+            ctx.lineWidth = 1.2 + energyFactor * 1.0;
             ctx.stroke();
 
             // Spontaneous synaptic impulse firing
-            if (pulses.length < maxPulses && Math.random() < 0.003) {
+            if (pulses.length < maxPulses && Math.random() < 0.004) {
               pulses.push({
                 fromIndex: i,
                 toIndex: j,
                 progress: 0,
-                speed: 0.015 + Math.random() * 0.02,
-                intensity: 0.5,
+                speed: 0.016 + Math.random() * 0.022,
+                intensity: 0.8 + Math.random() * 0.4,
               });
             }
           }
@@ -243,25 +249,29 @@ export const NeuralBackground: React.FC<NeuralBackgroundProps> = ({ isDark = tru
       // 3. Connect Mouse Cursor as an active Neuro-Transmitter Node
       if (mouse.active) {
         ctx.beginPath();
-        ctx.arc(mouse.x, mouse.y, 3, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(110, 231, 183, 0.6)';
+        ctx.arc(mouse.x, mouse.y, 4, 0, Math.PI * 2);
+        ctx.fillStyle = '#6ee7b7';
+        ctx.shadowColor = '#10b981';
+        ctx.shadowBlur = 18;
         ctx.fill();
+        ctx.shadowBlur = 0;
 
+        // Connect cursor to closest neurons
         let connections = 0;
-        for (let i = 0; i < neurons.length && connections < 4; i++) {
+        for (let i = 0; i < neurons.length && connections < 6; i++) {
           const n = neurons[i];
           const dist = Math.hypot(n.x - mouse.x, n.y - mouse.y);
-          if (dist < 160) {
+          if (dist < 200) {
             connections++;
-            const alpha = (1 - dist / 160) * 0.25;
+            const alpha = (1 - dist / 200) * 0.6;
             ctx.beginPath();
             ctx.moveTo(mouse.x, mouse.y);
             ctx.lineTo(n.x, n.y);
             ctx.strokeStyle = `rgba(110, 231, 183, ${alpha})`;
-            ctx.lineWidth = 0.8;
+            ctx.lineWidth = 1.5;
             ctx.stroke();
 
-            n.energy = Math.max(n.energy, 0.4);
+            n.energy = Math.max(n.energy, 0.7);
           }
         }
       }
@@ -281,16 +291,16 @@ export const NeuralBackground: React.FC<NeuralBackgroundProps> = ({ isDark = tru
         if (n.y < 0) { n.y = 0; n.vy *= -1; }
         else if (n.y > height) { n.y = height; n.vy *= -1; }
 
-        // Dissipate energy
-        n.energy = Math.max(0.1, n.energy * 0.98);
+        // Dissipate high energy gradually
+        n.energy = Math.max(0.15, n.energy * 0.985);
 
         // Pulse phase
         n.pulsePhase += n.pulseSpeed;
-        const currentRadius = (n.baseRadius + Math.sin(n.pulsePhase) * 0.5) * (1 + n.energy * 0.3);
+        const currentRadius = (n.baseRadius + Math.sin(n.pulsePhase) * 1.0) * (1 + n.energy * 0.6);
 
         // Draw Outer Bio-Luminescent Halo
         ctx.beginPath();
-        ctx.arc(n.x, n.y, currentRadius * 1.6, 0, Math.PI * 2);
+        ctx.arc(n.x, n.y, currentRadius * (2.8 * glowMultiplier), 0, Math.PI * 2);
         ctx.fillStyle = n.glowColor;
         ctx.fill();
 
@@ -298,12 +308,17 @@ export const NeuralBackground: React.FC<NeuralBackgroundProps> = ({ isDark = tru
         ctx.beginPath();
         ctx.arc(n.x, n.y, currentRadius, 0, Math.PI * 2);
         ctx.fillStyle = n.color;
+        if (ultraGlow) {
+          ctx.shadowColor = n.color;
+          ctx.shadowBlur = 12 * (1 + n.energy);
+        }
         ctx.fill();
+        ctx.shadowBlur = 0;
 
-        // White nucleus center dot
+        // White nucleus center dot for high-tech look
         ctx.beginPath();
-        ctx.arc(n.x, n.y, currentRadius * 0.4, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+        ctx.arc(n.x, n.y, currentRadius * 0.45, 0, Math.PI * 2);
+        ctx.fillStyle = '#ffffff';
         ctx.fill();
       }
 
@@ -316,7 +331,7 @@ export const NeuralBackground: React.FC<NeuralBackgroundProps> = ({ isDark = tru
         const to = neurons[pulse.toIndex];
 
         if (!from || !to || pulse.progress >= 1) {
-          if (to) to.energy = 0.5;
+          if (to) to.energy = 0.9; // energize destination node
           pulses.splice(p, 1);
           continue;
         }
@@ -324,16 +339,20 @@ export const NeuralBackground: React.FC<NeuralBackgroundProps> = ({ isDark = tru
         const curX = from.x + (to.x - from.x) * pulse.progress;
         const curY = from.y + (to.y - from.y) * pulse.progress;
 
-        // Subtle Electrical Impulse Spark
+        // Glowing Electrical Impulse Spark
         ctx.beginPath();
-        ctx.arc(curX, curY, 1.8 * pulse.intensity, 0, Math.PI * 2);
+        ctx.arc(curX, curY, 3.2 * pulse.intensity, 0, Math.PI * 2);
         ctx.fillStyle = '#ffffff';
+        ctx.shadowColor = '#34d399';
+        ctx.shadowBlur = 16;
         ctx.fill();
 
+        // Outer neon aura
         ctx.beginPath();
-        ctx.arc(curX, curY, 3.5 * pulse.intensity, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(52, 211, 153, 0.25)';
+        ctx.arc(curX, curY, 7 * pulse.intensity, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(52, 211, 153, 0.45)';
         ctx.fill();
+        ctx.shadowBlur = 0;
       }
 
       animationFrameId = requestAnimationFrame(render);
@@ -341,6 +360,7 @@ export const NeuralBackground: React.FC<NeuralBackgroundProps> = ({ isDark = tru
 
     render();
 
+    // Periodically update active synapses telemetry count
     const telemetryInterval = setInterval(() => {
       setSynapseCount(activeSynapseCount);
     }, 2000);
@@ -357,10 +377,10 @@ export const NeuralBackground: React.FC<NeuralBackgroundProps> = ({ isDark = tru
 
   return (
     <>
-      {/* Running Neurons Full-Screen Canvas (Subtle Background Layer) */}
+      {/* Running Neurons Full-Screen Canvas */}
       <canvas
         ref={canvasRef}
-        className="fixed inset-0 pointer-events-none z-0 opacity-30 dark:opacity-35 transition-opacity duration-700"
+        className="fixed inset-0 pointer-events-none z-0 opacity-80 dark:opacity-90 transition-opacity duration-700"
         style={{ willChange: 'transform' }}
       />
 
