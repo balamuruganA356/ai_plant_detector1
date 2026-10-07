@@ -416,13 +416,13 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
                 </div>
 
                 <div>
-                  <h3 className="text-base font-bold text-stone-900 dark:text-stone-100">
+                  <h3 className="text-base font-bold text-stone-900 dark:text-white">
                     {t.uploadAreaTitle}
                   </h3>
-                  <p className="text-xs text-stone-500 dark:text-stone-400 mt-1">
+                  <p className="text-xs text-stone-600 dark:text-stone-300 mt-1">
                     {t.dropOrBrowse}
                   </p>
-                  <p className="text-[11px] text-stone-400 dark:text-stone-500 mt-1">
+                  <p className="text-[11px] text-stone-400 dark:text-stone-400 mt-1">
                     {t.formats}
                   </p>
                 </div>
@@ -461,11 +461,11 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
           {/* VERIFIED SAMPLE LEAVES CAROUSEL / PICKER */}
           <div className="space-y-3 pt-2">
             <div className="flex items-center justify-between">
-              <h3 className="text-sm font-bold text-stone-900 dark:text-stone-100 flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-emerald-600" />
+              <h3 className="text-sm font-bold text-stone-900 dark:text-white flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-emerald-500" />
                 <span>{t.sampleLeavesTitle}</span>
               </h3>
-              <span className="text-[11px] text-stone-500">1-Click Field Tests</span>
+              <span className="text-[11px] text-stone-500 dark:text-stone-400 font-medium">1-Click Field Tests</span>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
@@ -487,10 +487,10 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
                     />
                   </div>
                   <div>
-                    <div className="font-bold text-xs text-stone-900 dark:text-stone-100 truncate">
+                    <div className="font-bold text-xs text-stone-900 dark:text-white truncate">
                       {sample.plantName}
                     </div>
-                    <div className="text-[10px] text-stone-500 dark:text-stone-400 line-clamp-1">
+                    <div className="text-[10px] text-stone-500 dark:text-stone-300 line-clamp-1">
                       {sample.isHealthy ? 'Healthy Leaf' : sample.diseaseName.split(' ')[0]}
                     </div>
                   </div>
@@ -510,10 +510,10 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
           </div>
 
           <div>
-            <h3 className="text-lg font-bold text-stone-900 dark:text-stone-100">
+            <h3 className="text-lg font-bold text-stone-900 dark:text-white">
               {t.analyzing}
             </h3>
-            <p className="text-xs text-stone-500 dark:text-stone-400 mt-1">
+            <p className="text-xs text-stone-600 dark:text-stone-300 mt-1">
               Executing multi-stage neural vision & agronomic pathology inference
             </p>
           </div>
@@ -574,10 +574,10 @@ export const ScannerPage: React.FC<ScannerPageProps> = ({
                 </span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 dark:text-stone-100 tracking-tight flex items-center gap-2">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 dark:text-white tracking-tight flex items-center gap-2">
                 <span>{diagnosis.plant.name}</span>
-                <span className="text-stone-400 dark:text-stone-600 font-light">—</span>
-                <span className={diagnosis.disease.isHealthy ? 'text-emerald-600' : 'text-amber-600'}>
+                <span className="text-stone-400 dark:text-stone-500 font-light">—</span>
+                <span className={diagnosis.disease.isHealthy ? 'text-emerald-500 dark:text-emerald-400' : 'text-amber-600 dark:text-amber-400'}>
                   {diagnosis.disease.name}
                 </span>
               </h2>

@@ -68,8 +68,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               <Sprout className="w-5 h-5" />
             </div>
             <div>
-              <span className="font-extrabold text-lg text-stone-900 dark:text-stone-50 tracking-tight flex items-center gap-1.5">
-                AgroVision <span className="text-emerald-700 dark:text-emerald-500 font-bold">AI</span>
+              <span className="font-extrabold text-lg text-stone-900 dark:text-white tracking-tight flex items-center gap-1.5">
+                AgroVision <span className="text-emerald-600 dark:text-emerald-400 font-bold">AI</span>
               </span>
               <span className="block text-[10px] text-stone-500 dark:text-stone-400 font-medium tracking-wide">
                 Crop Health Intelligence
@@ -179,7 +179,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-b border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 px-4 pt-2 pb-4 space-y-1">
+        <div className="lg:hidden border-b border-stone-200 dark:border-emerald-500/30 bg-white dark:bg-[#050f0c]/96 backdrop-blur-xl px-4 pt-2 pb-4 space-y-1">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = currentPage === item.id;
@@ -189,11 +189,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => handleSelectPage(item.id)}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg text-left transition-colors ${
                   isActive
-                    ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 font-semibold'
-                    : 'text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800'
+                    ? 'bg-emerald-50 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300 font-semibold'
+                    : 'text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-emerald-950/40'
                 }`}
               >
-                <Icon className={`w-5 h-5 ${isActive ? 'text-emerald-700' : 'text-stone-400'}`} />
+                <Icon className={`w-5 h-5 ${isActive ? 'text-emerald-600 dark:text-emerald-400' : 'text-stone-400 dark:text-stone-500'}`} />
                 <span>{item.label}</span>
               </button>
             );
